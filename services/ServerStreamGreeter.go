@@ -15,7 +15,7 @@ type ServerStreamGreeter struct {
 func (s ServerStreamGreeter) SayHelloStream(request *base.HelloRequest, server serverstream.Greeter_SayHelloStreamServer) error {
 	name := request.Name
 	for i := 0; i < 10; i++ {
-		time.Sleep(1)
+		time.Sleep(time.Second * 1)
 		err := server.Send(&base.HelloResponse{
 			Message: fmt.Sprintf("Hello, %v!", name),
 		})
