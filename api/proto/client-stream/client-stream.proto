@@ -1,0 +1,12 @@
+syntax = "proto3";
+option go_package="grpc-tutorial/api/proto/client-stream";
+import "google/protobuf/timestamp.proto";
+
+message Temperature {
+  double degree = 1;
+  google.protobuf.Timestamp time = 2;
+}
+
+service TemperatureService {
+  rpc getAvgTemp(stream Temperature) returns (Temperature);
+}
