@@ -17,7 +17,7 @@ func main() {
 		log.Fatalln(err)
 	}
 	defer conn.Close()
-	// create a stub of the server
+	// create a client of the server
 	client := unary.NewGreeterClient(conn)
 	// invoke the server method
 	resp, err := client.SayHello(context.Background(), &base.HelloRequest{Name: "Jack"})

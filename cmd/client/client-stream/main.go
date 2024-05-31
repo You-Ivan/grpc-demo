@@ -17,15 +17,15 @@ func main() {
 	}
 	client := clientstream.NewTemperatureServiceClient(conn)
 
-	stub, err := client.GetAvgTemp(context.Background())
+	client, err := client.GetAvgTemp(context.Background())
 	for i := 0; i < 10; i++ {
-		err := stub.Send(&clientstream.Temperature{Time: timestamppb.Now(), Degree: float64(i)})
+		err := client.Send(&clientstream.Temperature{Time: timestamppb.Now(), Degree: float64(i)})
 		if err != nil {
 			log.Fatalln(err)
 		}
 		time.Sleep(time.Second)
 	}
-	_, err = stub.CloseAndRecv()
+	_, err = client.CloseAndRecv()
 	if err != nil {
 		log.Fatalln(err)
 	}

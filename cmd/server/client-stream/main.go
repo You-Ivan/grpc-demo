@@ -8,8 +8,7 @@ import (
 )
 
 func main() {
-	f := func(server *grpc.Server) {
+	cmd.LaunchService(15003, func(server *grpc.Server) {
 		client_stream.RegisterTemperatureServiceServer(server, services.MyTemperatureService{})
-	}
-	cmd.LaunchService(15003, f)
+	})
 }

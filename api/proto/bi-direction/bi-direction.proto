@@ -1,0 +1,8 @@
+syntax = "proto3";
+option go_package = "grpc-tutorial/api/proto/bi-direction";
+
+import "api/proto/base/base.proto";
+
+service ChatService {
+  rpc Chat(stream HelloRequest) returns (stream HelloResponse);
+}

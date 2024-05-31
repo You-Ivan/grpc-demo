@@ -8,8 +8,7 @@ import (
 )
 
 func main() {
-	f := func(server *grpc.Server) {
+	cmd.LaunchService(15001, func(server *grpc.Server) {
 		unary.RegisterGreeterServer(server, services.UnaryGreeter{})
-	}
-	cmd.LaunchService(15001, f)
+	})
 }
